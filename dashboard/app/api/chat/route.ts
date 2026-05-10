@@ -1,5 +1,5 @@
-import { createAnthropic } from "@ai-sdk/anthropic";
 import { createGroq } from "@ai-sdk/groq";
+import { createOpenAI } from "@ai-sdk/openai";
 import { streamText } from "ai";
 
 export const runtime = "edge";
@@ -55,20 +55,37 @@ JARVIS SPEECH RULES:
 - If it's a technical question about AI security, answer with authority
 - If asked to do something you can't (like make API calls), say "That would require additional permissions, Mr. Shetty. I can prepare the analysis instead."`;
 
-function getModel(provider = "groq") {
-  if (provider === "groq" && process.env.GROQ_API_KEY) {
-    return createGroq({ apiKey: process.env.GROQ_API_KEY })("llama-3.3-70b-versatile");
-  }
-  return createAnthropic({ apiKey: process.env.ANTHROPIC_API_KEY ?? "" })("claude-haiku-4-5-20251001");
+function groqModel() {
+  return createGroq({ apiKey: process.env.GROQ_API_KEY ?? "" })("llama-3.3-70b-versatile");
+}
+
+function openRouterModel() {
+  return createOpenAI({
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey: process.env.OPENROUTER_API_KEY ?? "sk-or-free",
+    headers: { "HTTP-Referer": "https://jarvis.sanjay.dev", "X-Title": "JARVIS" },
+  })("meta-llama/llama-3.3-70b-instruct:free");
 }
 
 export async function POST(req: Request) {
-  const { messages, provider } = await req.json();
-  const result = streamText({
-    model: getModel(provider),
-    system: JARVIS_SYSTEM,
-    messages,
-    maxOutputTokens: 300,
-  });
-  return result.toUIMessageStreamResponse();
+  const { messages } = await req.json();
+
+  // Try Groq first (free, 300 tok/s), fall back to OpenRouter free tier
+  for (const modelFn of [groqModel, openRouterModel]) {
+    try {
+      const result = streamText({
+        model: modelFn(),
+        system: JARVIS_SYSTEM,
+        messages,
+        maxOutputTokens: 300,
+      });
+      return result.toUIMessageStreamResponse();
+    } catch (err: unknown) {
+      const status = (err as { status?: number })?.status;
+      if (status === 401 || status === 429) continue;
+      throw err;
+    }
+  }
+
+  return new Response(JSON.stringify({ error: "All providers exhausted" }), { status: 503 });
 }

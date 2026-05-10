@@ -9,8 +9,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^3.0.76",
     "@ai-sdk/groq": "^3.0.39",
+    "@ai-sdk/openai": "^3.0.63",
     "@ai-sdk/react": "^3.0.179",
     "ai": "^6.0.177",
     "framer-motion": "^12.38.0",
