@@ -1,0 +1,23 @@
+[
+  {
+    "name": "claude-code-best-practices",
+    "path": "C:\\Users\\sanja\\Documents\\claude-code-best-practices",
+    "branch": "master"
+  },
+  {
+    "name": "presales-automation",
+    "path": "C:\\Users\\sanja\\Documents\\presales-automation",
+    "branch": "master"
+  },
+  {
+    "name": "portfolio",
+    "path": "C:\\Users\\sanja\\Documents\\portfolio",
+    "branch": "master"
+  },
+  {
+    "name": "second-brain",
+    "path": "C:\\Users\\sanja\\Desktop\\Obsedian\\vaulty",
+    "branch": "master",
+    "obsidian": true
+  }
+]
