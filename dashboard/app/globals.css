@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+:root {
+  --j-blue: #00d4ff;
+  --j-cyan: #00ffff;
+  --j-glow: rgba(0, 212, 255, 0.35);
+  --j-glow-sm: rgba(0, 212, 255, 0.15);
+  --j-gold: #ff9500;
+  --j-red: #ff3b3b;
+  --j-green: #00ff88;
+  --bg: #030712;
+  --bg-panel: #060f1e;
+  --bg-card: #081628;
+  --border: #0d2540;
+  --border-bright: #1a4a70;
+  --text: #c8e6ff;
+  --muted: #4a7a9b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Courier New', 'Consolas', monospace;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+/* ── Grid BG ── */
+.hud-bg {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Glow text ── */
+.glow {
+  color: var(--j-blue);
+  text-shadow: 0 0 10px var(--j-glow), 0 0 20px var(--j-glow-sm);
+}
+.glow-green { color: var(--j-green); text-shadow: 0 0 8px rgba(0,255,136,0.4); }
+.glow-gold  { color: var(--j-gold);  text-shadow: 0 0 8px rgba(255,149,0,0.4); }
+.glow-red   { color: var(--j-red);   text-shadow: 0 0 8px rgba(255,59,59,0.4); }
+
+/* ── Panel ── */
+.panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+.panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--j-blue), transparent);
+  opacity: 0.8;
+}
+
+/* ── Corner cuts ── */
+.panel-cut {
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+/* ── Scan line ── */
+.scan-container { position: relative; overflow: hidden; }
+.scan-container::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--j-blue), transparent);
+  animation: scan 4s linear infinite;
+  opacity: 0.6;
+}
+@keyframes scan {
+  0%   { top: -2px; }
+  100% { top: 100%; }
+}
+
+/* ── Pulse dot ── */
+.pulse {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--j-green);
+  box-shadow: 0 0 6px var(--j-green);
+  animation: pulse 2s ease-in-out infinite;
+}
+.pulse-blue {
+  background: var(--j-blue);
+  box-shadow: 0 0 6px var(--j-blue);
+}
+.pulse-red {
+  background: var(--j-red);
+  box-shadow: 0 0 6px var(--j-red);
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
+}
+
+/* ── Arc reactor ── */
+.arc-ring {
+  border-radius: 50%;
+  border: 1px solid var(--j-blue);
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin linear infinite;
+  box-shadow: 0 0 6px var(--j-glow);
+}
+@keyframes spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes spin-rev {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(-360deg); }
+}
+.spin-rev { animation-name: spin-rev; }
+
+/* ── Progress bar ── */
+.progress-track {
+  background: var(--border);
+  border-radius: 2px;
+  height: 4px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--j-blue), var(--j-cyan));
+  box-shadow: 0 0 6px var(--j-glow);
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Label ── */
+.label {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Counter ── */
+.stat-num {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ── Chat bubbles ── */
+.bubble-user {
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.3);
+  border-radius: 0 8px 8px 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  align-self: flex-end;
+  max-width: 85%;
+}
+.bubble-jarvis {
+  background: rgba(0,255,136,0.05);
+  border: 1px solid rgba(0,255,136,0.2);
+  border-radius: 8px 0 8px 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  align-self: flex-start;
+  max-width: 85%;
+  color: #a8ffdc;
+}
+
+/* ── Boot flicker ── */
+@keyframes flicker {
+  0%,19%,21%,23%,25%,54%,56%,100% { opacity: 1; }
+  20%,22%,24%,55% { opacity: 0.4; }
+}
+.flicker { animation: flicker 5s linear infinite; }
+
+/* ── Glitch ── */
+@keyframes glitch {
+  0%,90%,100% { transform: translate(0); }
+  92%  { transform: translate(-2px, 1px); }
+  94%  { transform: translate(2px, -1px); }
+  96%  { transform: translate(-1px, 0); }
+  98%  { transform: translate(1px, 1px); }
+}
+.glitch { animation: glitch 6s infinite; }
+
+/* ── Fade up ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up   { animation: fadeUp 0.5s ease forwards; }
+.fade-up-1 { opacity:0; animation: fadeUp 0.5s 0.1s ease forwards; }
+.fade-up-2 { opacity:0; animation: fadeUp 0.5s 0.2s ease forwards; }
+.fade-up-3 { opacity:0; animation: fadeUp 0.5s 0.3s ease forwards; }
+.fade-up-4 { opacity:0; animation: fadeUp 0.5s 0.4s ease forwards; }
+
+/* ── Blink cursor ── */
+@keyframes blink { 0%,50%{opacity:1}51%,100%{opacity:0} }
+.cursor::after { content:'_'; animation: blink 1s infinite; color: var(--j-blue); }
