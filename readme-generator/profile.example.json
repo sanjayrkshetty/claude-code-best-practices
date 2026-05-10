@@ -1,0 +1,34 @@
+{
+  "name": "Sanjay R K Shetty",
+  "role": "AI Security Researcher",
+  "company": "SISA Information Security",
+  "education": "B.Tech Cybersecurity, MIT Bengaluru (2022–2026)",
+  "bio": "I work at the intersection of AI and offensive security — building threat models for AI systems, researching adversarial ML, and helping organisations understand what breaks before attackers do.",
+  "focus": [
+    "AI Security: Adversarial ML, LLM threat modelling, AI zero-day research",
+    "Security Testing: Web app, Network, API, Cloud pen testing, OWASP ZAP, VA&M",
+    "DFIR: Incident response, Digital forensics, Threat hunting, Tabletop exercises",
+    "Compliance: PCI DSS v4.0, ISO/IEC 27001, SOC 2, HIPAA",
+    "Pre-Sales: Discovery, Scoping, Proposal generation, Pipeline automation"
+  ],
+  "repos": [
+    {
+      "name": "presales-automation",
+      "url": "https://github.com/yourusername/presales-automation",
+      "description": "Full-stack pre-sales tool for a DFIR team — opportunity pipeline, AI-generated DOCX proposals, follow-up drafting, GAM contacts. React · Vite · Express · SQLite · Claude API"
+    },
+    {
+      "name": "claude-code-best-practices",
+      "url": "https://github.com/yourusername/claude-code-best-practices",
+      "description": "Practical reference for production-quality Claude Code output — patterns, security rules, token efficiency, CLAUDE.md setup"
+    }
+  ],
+  "stack": ["Python", "JavaScript", "React", "Node.js", "SQLite", "Claude API"],
+  "goals": [
+    "Ship one public AI security research output",
+    "4 LinkedIn posts on adversarial ML / LLM security with technical depth",
+    "Read + summarize 3 adversarial ML papers",
+    "Build portfolio site"
+  ],
+  "linkedin": "https://linkedin.com/in/sanjay-r-k-shetty-1048ba245"
+}

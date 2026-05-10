@@ -1,0 +1,12 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "GitHub profile README generator using Claude API",
+  "type": "commonjs",
+  "scripts": {
+    "generate": "node generate.js profile.json"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}

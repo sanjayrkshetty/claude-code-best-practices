@@ -2,6 +2,20 @@
 
 A practical reference for getting production-quality output from Claude Code — built from real engineering work, not tutorials.
 
+## Included Tools
+
+| Tool | What it does |
+|---|---|
+| [`readme-generator/`](./readme-generator/) | CLI that generates a GitHub profile README from a JSON config using Claude API — run once, pipe to `README.md` |
+
+**Quick start (README generator):**
+```bash
+cd readme-generator
+npm install
+cp profile.example.json profile.json   # edit with your details
+ANTHROPIC_API_KEY=sk-ant-... node generate.js > ../output-README.md
+```
+
 ---
 
 ## Core Mental Model
