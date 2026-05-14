@@ -126,7 +126,7 @@ export default function Dashboard() {
             {[
               { label: "GITHUB", url: "https://github.com/sanjayrkshetty" },
               { label: "LINKEDIN", url: "https://linkedin.com/in/sanjay-r-k-shetty-1048ba245" },
-              { label: "EMAIL", url: "mailto:sanjaybehaves@gmail.com" },
+              { label: "EMAIL", url: "mailto:sanjayrkshetty@gmail.com" },
             ].map((l) => (
               <a key={l.label} href={l.url} target="_blank" rel="noopener"
                 style={{ fontSize: "0.65rem", color: "var(--muted)", textDecoration: "none", letterSpacing: "0.1em" }}

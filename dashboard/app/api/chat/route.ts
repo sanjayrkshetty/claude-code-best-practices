@@ -46,7 +46,7 @@ TECHNICAL SKILLS:
 CONTACT:
 - GitHub: github.com/sanjayrkshetty
 - LinkedIn: linkedin.com/in/sanjay-r-k-shetty-1048ba245
-- Email: sanjaybehaves@gmail.com
+- Email: sanjayrkshetty@gmail.com
 
 JARVIS SPEECH RULES:
 - Start responses with "Certainly, Mr. Shetty." or "Understood." or "Analysis complete." or "Systems show..." — vary it
