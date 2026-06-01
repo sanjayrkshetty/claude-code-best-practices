@@ -76,7 +76,7 @@ function loadEnv() {
     if (!fs.existsSync(loc)) continue;
     for (const line of fs.readFileSync(loc, "utf8").split("\n")) {
       const m = line.match(/^([A-Z_][A-Z_0-9]*)=(.*)$/);
-      if (m && !process.env[m[1]]) {
+      if (m) {
         process.env[m[1]] = m[2].trim().replace(/^["']|["']$/g, "");
       }
     }
