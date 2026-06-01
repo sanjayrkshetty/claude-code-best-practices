@@ -64,6 +64,25 @@ const AI_SECURITY_INSIGHTS = [
   "Threat modeling LLM systems: STRIDE doesn't map cleanly — need LLM-specific threat taxonomy",
 ];
 
+// ── Env loader (Task Scheduler doesn't inherit shell env vars) ────────────────
+
+function loadEnv() {
+  const candidates = [
+    path.join(process.env.USERPROFILE || process.env.HOME || "", ".env"),
+    path.join(__dirname, ".env"),
+    path.join(__dirname, "..", ".env"),
+  ];
+  for (const loc of candidates) {
+    if (!fs.existsSync(loc)) continue;
+    for (const line of fs.readFileSync(loc, "utf8").split("\n")) {
+      const m = line.match(/^([A-Z_][A-Z_0-9]*)=(.*)$/);
+      if (m && !process.env[m[1]]) {
+        process.env[m[1]] = m[2].trim().replace(/^["']|["']$/g, "");
+      }
+    }
+  }
+}
+
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
 function today() {
@@ -309,6 +328,7 @@ async function buildCommitMessage(repoName, sectionHeader) {
 // ── Main ──────────────────────────────────────────────────────────────────────
 
 async function main() {
+  loadEnv();
   log(`\n${"═".repeat(55)}`);
   log(`Repo Improver Agent — ${today()}`);
   log(`${"═".repeat(55)}`);
