@@ -1,3 +1,17 @@
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=180&section=header&text=Claude%20Code%20Best%20Practices&fontSize=34&fontColor=fff&animation=twinkling&fontAlignY=38&desc=Production%20Patterns%20for%20Claude%20Code%20%7C%20Built%20from%20Real%20Engineering%20Work&descAlignY=58&descSize=14" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/sanjayrkshetty"><img src="https://img.shields.io/badge/by-@sanjayrkshetty-7C3AED?style=flat-square&logo=github&logoColor=white" /></a>
+  &nbsp;
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Anthropic%20Claude-D4A843?style=flat-square" />
+</p>
+
+---
+
 # Claude Code Best Practices
 
 A practical reference for getting production-quality output from Claude Code — built from real engineering work, not tutorials.
@@ -230,3 +244,23 @@ project/
 ---
 
 *Built from production experience building a full-stack pre-sales automation system for a DFIR security firm. All patterns validated on real code.*
+
+---
+
+<p align="center">
+  Part of <a href="https://github.com/sanjayrkshetty"><strong>@sanjayrkshetty</strong></a>'s AI security portfolio
+</p>
+
+<p align="center">
+  <a href="https://sanjayrkshetty.vercel.app"><img src="https://img.shields.io/badge/Portfolio-Live-00d97e?style=flat-square&logo=vercel&logoColor=white" /></a>
+  &nbsp;
+  <a href="https://linkedin.com/in/sanjay-r-k-shetty-1048ba245"><img src="https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=flat-square&logo=linkedin&logoColor=white" /></a>
+  &nbsp;
+  <a href="https://github.com/sanjayrkshetty"><img src="https://img.shields.io/badge/GitHub-@sanjayrkshetty-181717?style=flat-square&logo=github&logoColor=white" /></a>
+  &nbsp;
+  <a href="mailto:sanjayrkshetty@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-EA4335?style=flat-square&logo=gmail&logoColor=white" /></a>
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=80&section=footer" />
+</p>
